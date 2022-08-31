@@ -1,11 +1,13 @@
 package hello.hellospring.service;
 
 import hello.hellospring.domain.Member;
+import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,22 +19,30 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class MemberServiceIntegrationTest {
 
-    MemberService memberService;
-    MemoryMemberRepository memberRepository;
+    //MemberService memberService;
+    //MemoryMemberRepository memberRepository;
+
     // MemberService memberService = new MemberService();
     // MemoryMemberRepository memberRepository = new MemoryMemberRepository();
 
     // new MemberService()를 생성할 때 Memory~Repository()를 직접 넣어줌
+    /*
     @BeforeEach
     public void beforeEach() {
         memberRepository = new MemoryMemberRepository();
         memberService = new MemberService(memberRepository);
     }
+     */
 
+    /*
     @AfterEach
     public void afterEach() {
         memberRepository.clearStore();
     }
+     */
+
+    @Autowired MemberService memberService;
+    @Autowired MemberRepository memberRepository;
 
     @Test
     void 회원가입() {
@@ -40,7 +50,7 @@ class MemberServiceIntegrationTest {
         Member member = new Member();
         // 여기에서 값을 spring으로 지정하면 DB에 계속 값이 누적이 되기 때문에 오류 생김
         // afterEach로 계속 초기화해주면 괜춘.
-        member.setName("hello");
+        member.setName("spring");
 
         // when 이걸 실행했을 때
         // 뭘 검증할거냐?
@@ -82,6 +92,7 @@ class MemberServiceIntegrationTest {
         // then
     }
 
+    /*
     @Test
     void findMembers() {
     }
@@ -89,4 +100,6 @@ class MemberServiceIntegrationTest {
     @Test
     void findOne() {
     }
+
+     */
 }
