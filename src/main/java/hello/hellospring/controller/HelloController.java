@@ -16,11 +16,12 @@ public class HelloController {
         // 값(hello!!)을 직접 불러옴
         model.addAttribute("data","hello!!");
         // templates 폴더의 hello.html 파일로 연결
-        return "hello";
+        return "hello";  // return하는 hello가 연결되는 html 파일명임
     }
 
     @GetMapping("hello-mvc")
     // 값을 외부에서 url 파라미터로 받아옴
+                                                            // Model에 담으면 View에서 렌더링 할 때 사용
     public String helloMvc(@RequestParam("name") String name, Model model) {
         model.addAttribute("name", name);
         return "hello-template";
