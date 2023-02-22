@@ -46,6 +46,7 @@ public class MemberService {
         // 중복회원검증
         validateDuplicateMember(member);
         memberRepository.save(member);
+        // 회원가입하면 회원번호만 리턴해줌
         return member.getId();
     }
 
