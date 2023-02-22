@@ -18,9 +18,10 @@ public class MemberService {
     //@Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
-        // 아니야 파일이 바뀌었다구!!!!
     }
 
+
+    //...............
     // 회원가입
     public long join(Member member) {
         // 같은 이름이 있는 중복 회원X
