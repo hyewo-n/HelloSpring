@@ -51,6 +51,7 @@ class MemberServiceTest {
     }
 
     @Test
+    // join()에서 중복 검증 로직을 실행시켜 예외 상황이 나왔을 때를 보는 것이 더 중요함
     public void 중복_회원_예외(){
         // given
         Member member1 = new Member();
@@ -68,8 +69,9 @@ class MemberServiceTest {
         assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
 
        /*
+       예외 상황시 방법 1.
         try {
-            // 두번쨰 join으로 이름이 spring으로 똑같음
+            // 두번쨰 join으로 이름이 spring으로 똑같음 -> 예외상황 발생
             memberService.join(member2);
             fail();
         } catch (IllegalStateException e) {
