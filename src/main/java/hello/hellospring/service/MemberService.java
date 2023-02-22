@@ -18,6 +18,7 @@ public class MemberService {
     //@Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
+        // 아니야 파일이 바뀌었다구!!!!
     }
 
     // 회원가입
