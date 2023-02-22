@@ -16,11 +16,12 @@ public class HelloController {
         // 값(hello!!)을 직접 불러옴
         model.addAttribute("data","hello!!");
         // templates 폴더의 hello.html 파일로 연결
-        return "hello";
+        return "hello";  // return하는 hello가 연결되는 html 파일명임
     }
 
     @GetMapping("hello-mvc")
     // 값을 외부에서 url 파라미터로 받아옴
+                                                            // Model에 담으면 View에서 렌더링 할 때 사용
     public String helloMvc(@RequestParam("name") String name, Model model) {
         model.addAttribute("name", name);
         return "hello-template";
@@ -31,7 +32,7 @@ public class HelloController {
     // 웹 페이지에서 '소스 보기'로 코드를 보면 html 태그 없이 깔끔하게 값만 있음
     @ResponseBody
     public String helloString(@RequestParam("name") String name) {
-        return "hello " + name;
+        return "hello " + name;  // "hello spring"으로 표현
     }
 
     @GetMapping("hello-api")
@@ -42,6 +43,7 @@ public class HelloController {
         return hello;
     }
 
+    // 객체 생성  ex) HelloController.Hello로 사용 가능
     static class Hello{
         private String name;
 

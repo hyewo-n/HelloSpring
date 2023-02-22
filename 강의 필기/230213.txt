@@ -1,0 +1,54 @@
+웹 애플리케이션에서 첫 진입점이 컨트롤러
+스프링 ex) @Controller
+
+@GetMapping("hello")
+   ~~
+ : 웹 애플리케이션에서 /hello가 들어오면 이 메서드 호출
+
+
+> 프로젝트 환경설정 - 빌드하고 실행하기
+
+* 서버 배포할 때는 .jar 파일만 복사해서 서버에 넣어주고 
+  java -jar 을 실행시키면 서버에서도 스프링이 동작하게 됨
+
+
+> 스프링 웹 개발 기초 - 정적 컨텐츠
+
+정적 컨텐츠(정적) : 서버에서 하는 것 없이 파일을 그대로 웹 브라우저에 내려주는 것
+MVC와 템플릿 방식(동적) : JSP, PHP 등의 템플릿 엔진 - 서버에서 프로그래밍하여 html을 동적으로 바꾸어내려주는 것
+                                     : MVC - Model, View, Controller 
+API : JSON 구조 포맷으로 클라이언트한테 데이터를 전달해주는 게 요즘 API 방식
+
+# 정적 컨텐츠 이미지
+ - 웹 브라우저에 localhost:8080~~.html을 침
+ - 내장 톰캣 서버가 요청을 받아서 스프링한테 넘김
+ - 컨트롤러가 우선순위를 가짐
+ - 컨트롤러가 hello-static 관련 컨트롤러가 있는지 찾아봄
+ - 그러면 내부에 있는 resources 안에 있는 html 파일을 찾아서 그대로 반환해줌
+
+
+> 스프링 웹 개발 기초 - MVC와 템플릿 엔진
+ 
+# view는 화면을 그리는데 모든 역량을 집중해야 함
+   controller와 model은 비지니스 로직이나 내부적인 것을 처리하는 데에 집중을 해야 함
+
+# @GetMapping("hello-mvc")
+   - 외부 웹에서 파라미터를 받을 것임
+   - @GetMapping("hello")에서는 "hello!!" 로 값을 직접 받았었음
+
+* thymeleaf 엔진의 장점 : html의 파일을 서버 없이 그냥 열어봐도 껍데기를 볼 수 있음
+
+# MVC, 템플릿 엔진 이미지
+ - 웹 브라우저에서 localhost:8080/hello-mvc 넘김
+ - 내장 톰캣 서버를 거쳐 스프링한테 던짐
+ - helloController의 메서드에 맵핑이 되어있네! 하고 찾으면 그 메서드 호출
+ - return 할 때 이름은 hello-template로 함
+ - model에는 키(key)는 name이고 값은 spring으로 넣었음
+ - 스프링이 viewResolver(view를 찾아주고 템플릿 엔진을 연결시켜줌)가
+   리턴값과 같은 html 파일(hello-template.html)을 찾아서
+   Thymeleaf 템플릿 엔진한테 처리해달라고 넘김
+ - Thymeleaf 템플릿 엔진이 렌더링을 해서 변환을 한 html을 웹 브라우저에 반환함
+
+
+
+

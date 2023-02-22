@@ -8,19 +8,23 @@ import java.util.*;
 //@Repository
 public class MemoryMemberRepository implements MemberRepository{
 
-    // 메모리이니까 저장을 어딘가에 해놔야함
+    // 메모리이니까 저장을 어딘가에 해놓아야 함
     private static Map<Long, Member> store = new HashMap<>();
+    // 0, 1, 2 등 키 값을 생성해줌
     private static long sequence = 0L;
 
     @Override
     public Member save(Member member) {
+        // member의 ID 값 생성
         member.setId(++sequence);
+        // store에 저장
         store.put(member.getId(), member);
         return member;
     }
 
     @Override
     public Optional<Member> findById(Long id) {
+        // store에서 꺼내온다.
               // null이 반환될 가능성이 있으면 Optional로 한 번 감쌈
               // 한 번 감싸서 반환면 클라이언트가 뭘 할 수가 있음
         return Optional.ofNullable(store.get(id));

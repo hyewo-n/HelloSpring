@@ -14,7 +14,7 @@ public class MemoryMemberRepositoryTest {
 
     MemoryMemberRepository repository = new MemoryMemberRepository();
 
-    // 메서드가 실행이 끝날 때마다 동작. 콜백 메서드
+    // 실행이 끝날 때마다 메서드가 동작. 콜백 메서드
     @AfterEach
     public void afterEach() {
         repository.clearStore();
@@ -23,20 +23,24 @@ public class MemoryMemberRepositoryTest {
     @Test
     public void save(){
         Member member = new Member();
+
         //이름 세팅
         member.setName("spring");
 
         // member를 저장
         repository.save(member);
 
-        // DB에서 꺼냄
+        // DB에서 꺼냄(get())
         Member result = repository.findById(member.getId()).get();
 
         // 검증
-        // new에서 한 거랑 DB에서 꺼낸 거랑 똑같아야 함
-        // 'result = true' 이렇게 뜸
-        // 근데 결과값을 계속 글자로 볼 순 없다!
-        //System.out.println("result = " + (result == member));
+        /*
+         new에서 한 거랑 DB에서 꺼낸 거랑 똑같으면 참!
+         System.out.println("result = " + (result == member)); 를 돌리면
+         'result = true' 이렇게 뜸
+         근데 결과값을 계속 글자로 볼 순 없다!
+
+         */
 
         // 방법1. 그래서 Assertions 사용 -> 성공하면 초록불! 결과값 따로 출력 x
         //Assertions.assertEquals(member, result);
@@ -56,7 +60,7 @@ public class MemoryMemberRepositoryTest {
         repository.save(member2);
 
         Member result = repository.findByName("Spring1").get();
-
+        // 위의 "Spring1"과 아래의 member1이 같아야 녹색불 뜸
         assertThat(result).isEqualTo(member1);
     }
 
@@ -67,7 +71,7 @@ public class MemoryMemberRepositoryTest {
         repository.save(member1);
 
         Member member2 = new Member();
-        member2.setName("Spring1");
+        member2.setName("Spring2");
         repository.save(member2);
 
         List<Member> result = repository.findAll();
