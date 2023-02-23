@@ -13,11 +13,12 @@ import java.util.List;
 @Controller
 public class MemberController {
 
-    // new MemberService()로 생성하게 되면 MemberController 말고 다른 여러 Controller들이 가져다 사용 가능
+    // @Controller이 노테이션 되어있으면 스프링 컨테이너에 등록을 하고 거기서 받아서 사용하게 됨
+    // 그런데 new MemberService()로 생성하게 되면 MemberController 말고 다른 여러 Controller들이 가져다 사용 가능
     private final MemberService memberService; // = new MemberService();
 
-    // SPRING이 MemberContorller에 있는 MemberService를 가져다가 연결을 시켜줌
-    @Autowired
+
+    @Autowired    // SPRING이 MemberContorller에 있는 MemberService를 가져다가 연결을 시켜줌
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
     }
