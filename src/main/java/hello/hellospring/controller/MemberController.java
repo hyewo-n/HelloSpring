@@ -23,7 +23,7 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-    // ~ 여기로 가겠다
+    // ~여기로 가겠다
     @GetMapping("/members/new")
     public String createForm() {
         // 아무것도 하는 것 없이 createMemberForm으로 이동, 그 html이 화면에 뿌려짐

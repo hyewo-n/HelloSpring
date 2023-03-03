@@ -8,3 +8,16 @@
 - @GetMapping("/") 해주고 "home"을 리턴시킴
    "/" 는 첫번째로 호출할 수 있도록 해 줌
 - 기존에 만들었던 index.html은 무시됨
+
+2) 회원 등록
+ - MemberController에 @GetMapping("/members/new")
+ - @PostMapping
+    : 데이터를 form에 넣어서 전달할 때 Post 사용
+* URL에 직접 치는 것은 Get 방식 - 주로 조회할 때 사용
+
+3) 회원 조회
+ - memberService의 모든 값을 불러와 List에 저장 후 불러오는 방식
+
+
+* 메모리에 있기 때문에 서버를 내렸다가 다시 키게 되면 데이터가 다 지워짐
+  - 데이터베이스를 만들 것
