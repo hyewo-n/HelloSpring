@@ -1,0 +1,10 @@
+> 회원 관리 예제 - 웹 MVC 개발
+
+
+1) 홈 화면 추가
+
+- controller 패키지에 HomeController 클래스 생성
+- @Controller 생성
+- @GetMapping("/") 해주고 "home"을 리턴시킴
+   "/" 는 첫번째로 호출할 수 있도록 해 줌
+- 기존에 만들었던 index.html은 무시됨
