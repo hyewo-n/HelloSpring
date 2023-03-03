@@ -26,9 +26,13 @@ public class MemberController {
     // ~ 여기로 가겠다
     @GetMapping("/members/new")
     public String createForm() {
+        // 아무것도 하는 것 없이 createMemberForm으로 이동, 그 html이 화면에 뿌려짐
         return "members/createMemberForm";
     }
 
+    // 데이터를 form에 넣어서 전달할 때 Post 방식 사용 (Get 방식은 주로 조회할 때)
+    // createMemberForm에서 값을 post로 넘기면 여기서 가져옴
+    // url은 같지만 여긴 post이기 때문에 이게 호출되는 것
     @PostMapping("members/new")
     public String create(MemberForm form) {
         Member member = new Member();
@@ -36,7 +40,7 @@ public class MemberController {
 
         memberService.join(member);
 
-        // 회원가입이 끝났으니까 홈화면으로 보내버림
+        // 회원가입이 끝났으니까 홈 화면으로 보냄
         return "redirect:/";
     }
 
