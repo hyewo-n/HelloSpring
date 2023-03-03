@@ -19,7 +19,7 @@ public class SpringConfig {
         this.dataSource = dataSource;
     }
 
-    // Spring Bean에 입력하라는 뜻이네! 하고 등록을 해줌
+    // Spring Bean에 입력하라는 뜻이네! 하고 로직을 인식하여 등록을 해줌
     // 스프링빈에 MemberService랑 MemberRepository 등록
     @Bean
     public MemberService memberService() {
