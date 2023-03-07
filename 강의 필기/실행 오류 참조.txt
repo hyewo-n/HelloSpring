@@ -1,0 +1,7 @@
+> 실행 오류 시 참고한 사이트
+
+# finished with non-zero exit value 1 오류
+ https://yjh5369.tistory.com/entry/intellij-%EC%8B%A4%ED%96%89-%EC%8B%9C-finished-with-non-zero-exit-value-1-%EC%98%A4%EB%A5%98
+
+# AOP(TimeTraceAop)를 @Component 로 선언 vs SpringConfig에 @Bean으로 등록시 순환 문제
+ https://www.inflearn.com/questions/48156/aop-timetraceaop-%EB%A5%BC-component-%EB%A1%9C-%EC%84%A0%EC%96%B8-vs-springconfig%EC%97%90-bean%EC%9C%BC%EB%A1%9C-%EB%93%B1%EB%A1%9D
